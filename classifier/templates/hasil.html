@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hasil Klasifikasi Naive Bayes</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="static/css/hasil.css">
+</head>
+<body>
+    <!-- Navigation Bar -->
+    <nav class="navbar">
+        <div class="navbar-container">
+            <div class="navbar-brand">
+                <i class="fas fa-brain"></i> Naive Bayes Classifier
+            </div>
+            <ul class="navbar-menu">
+                <li><a href="/" class="nav-link">Beranda</a></li>
+                <li><a href="/test" class="nav-link">Test Klasifikasi</a></li>
+                <li><a href="/" class="nav-link active">Hasil</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <div class="container-main">
+        <!-- Top Bar -->
+        <div class="top-bar">
+            <h1><i class="fas fa-brain"></i> Hasil Klasifikasi Naive Bayes</h1>
+            <p>Sistem Prediksi Tingkat Obesitas</p>
+        </div>
+
+        <!-- Hasil Prediksi Card -->
+            <div class="hasil-prediksi-section">
+                <div class="icon-check">
+                    <i class="fas fa-check-circle"></i>
+                </div>
+                <p style="font-size: 1rem; margin-bottom: 5px;">Hasil Prediksi</p>
+                <div class="hasil-label" id="hasilPrediksi">
+                    {{ prediksi }}
+                </div>
+                <p style="margin: 0; font-size: 0.95rem; opacity: 0.95;">
+                    Prediksi didasarkan pada data input yang telah dikirimkan
+                </p>
+            </div>
+
+        <!-- Data Input Card -->
+        <div class="card card-custom">
+            <div class="card-header card-header-custom">
+                <h5 style="margin: 0;"><i class="fas fa-database"></i> Data Input</h5>
+            </div>
+            <div class="data-input-section">
+                <table class="table-data" id="dataInputContainer">
+                    <thead>
+                        <tr>
+                            <th>Parameter</th>
+                            <th>Nilai</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for key, value in sample_raw.items %}
+                        <tr>
+                            <td style="text-align: center; padding: 40px; ">
+                                {{ key }}
+                            </td>
+                            <td style="text-align: center; padding: 40px;">
+                                {{ value }}
+                            </td>
+                        </tr>
+                        {% endfor %}
+
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <!-- Probabilitas Card -->
+        <div class="card card-custom">
+            <div class="card-header card-header-custom">
+                <h5 style="margin: 0;"><i class="fas fa-chart-pie"></i> Probabilitas Prediksi</h5>
+            </div>
+            <div class="probabilitas-section">
+                <table id="dataInputContainer">
+                    <thead>
+                        <tr>
+                            <th>Kelas</th>
+                            <th>Probabilitas</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for key, value in proba.items %}
+                        <tr>
+                            <td style="text-align: center; padding: 40px; ">
+                                {{ key }}
+                            </td>
+                            <td style="text-align: center; padding: 40px;">
+                                {{ value }}
+                            </td>
+                        </tr>
+                        {% endfor %}
+
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <!-- Tombol Kembali -->
+        <div class="btn-center">
+            <a href="/" class="btn btn-kembali">
+                <i class="fas fa-arrow-left"></i> Kembali ke Halaman Utama
+            </a>
+        </div>
+    </div>
+</body>
+</html>

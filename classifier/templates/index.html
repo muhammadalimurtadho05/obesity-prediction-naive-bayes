@@ -1,0 +1,49 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Klasifikasi Naive Bayes</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="{% static 'css/index.css' %}">
+</head>
+<body>
+    <!-- Navigation Bar -->
+    <nav class="navbar">
+        <div class="navbar-container">
+            <div class="navbar-brand">
+                <i class="fas fa-brain"></i> Naive Bayes Classifier
+            </div>
+            <ul class="navbar-menu">
+                <li><a href="/" class="nav-link active">Beranda</a></li>
+                <li><a href="/test" class="nav-link">Test Klasifikasi</a></li>
+                <li><a href="/hasil" class="nav-link">Hasil</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <div class="main-content">
+        <div class="container">
+            <div class="hero">
+                <div class="hero-content">
+                    {% comment %} <div class="greeting">Halo, <strong>{{ nama }}</strong>! 👋</div> {% endcomment %}
+                    <h1>Selamat Datang</h1>
+                    <p>Sistem prediksi tingkat obesitas berbasis algoritma Naive Bayes untuk menganalisis dan mengklasifikasikan data kesehatan Anda dengan akurat dan cepat.</p>
+                
+
+                    <a href="/test" class="cta-button"><i class="fas fa-flask"></i> Mulai Test</a>
+                </div>
+
+                <div class="hero-visual">
+                    <div class="visual-box"><img src="{% static 'medical-report.png' %}" width="40%" ></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <p>&copy; 2026 Obesity Risk Classifier - Naive Bayes | Kecerdasan Komputasional</p>
+    </footer>
+</body>
+</html>
