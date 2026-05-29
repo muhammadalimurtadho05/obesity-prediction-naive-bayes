@@ -4,6 +4,14 @@ Aplikasi web berbasis **Django** untuk memprediksi tingkat obesitas seseorang me
 
 ---
 
+## Our Team
+- Muhammad Ali Murtadho
+- Mochammad Zaenal Abidin
+- Ahmad Maulana Ishaq
+- Yohanes Oktanio
+
+---
+
 ## Deskripsi
 
 Sistem ini mengklasifikasikan tingkat obesitas berdasarkan parameter kesehatan seperti usia, tinggi badan, berat badan, kebiasaan makan, dan aktivitas fisik menggunakan pendekatan probabilistik Naive Bayes.
