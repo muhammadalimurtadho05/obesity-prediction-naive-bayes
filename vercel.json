@@ -1,7 +1,7 @@
 {
   "builds": [
     {
-      "src": "classifier/wsgi.py",
+      "src": "bayes_classifier/wsgi.py",
       "use": "@vercel/python",
       "config": {
         "maxLambdaSize": "15mb",
@@ -23,7 +23,7 @@
     },
     {
       "src": "/(.*)",
-      "dest": "classifier/wsgi.py"
+      "dest": "bayes_classifier/wsgi.py"
     }
   ]
 }
