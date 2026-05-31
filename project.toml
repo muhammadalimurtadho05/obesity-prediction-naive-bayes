@@ -1,0 +1,2 @@
+[tool.vercel]
+entrypoint = "bayes_classifier.wsgi.application"
