@@ -15,21 +15,21 @@
     <nav class="navbar">
         <div class="navbar-container">
             <a href="/" class="navbar-brand">
-                <i data-lucide="activity"></i> ObesityPredict AI
+                <i data-lucide="activity"></i> Obesity Risk Classifier
             </a>
             <ul class="navbar-menu">
-                <li><a href="/" class="nav-link">Home</a></li>
-                <li><a href="/test" class="nav-link">Analyze</a></li>
-                <li><a href="#" class="nav-link">About</a></li>
+                <li><a href="/" class="nav-link">Beranda</a></li>
+                <li><a href="/test" class="nav-link">Test Klasifikasi</a></li>
+                <li><a href="/hasil" class="nav-link active">Hasil</a></li>
             </ul>
         </div>
     </nav>
 
     <main class="container-main">
         <div class="card result-card">
-            <div class="result-badge">Analysis Complete</div>
+            <div class="result-badge">Hasil Klasifikasi</div>
             <h1 class="result-main">{{ prediksi }}</h1>
-            <p class="result-meta">Based on your clinical metrics and lifestyle patterns, our AI has classified your health status with the above result.</p>
+            <p class="result-meta">Prediksi didasarkan pada data input yang telah dikirimkan menggunakan algoritma Naive Bayes.</p>
         </div>
 
         <div class="form-grid">
@@ -37,14 +37,14 @@
             <div class="card">
                 <div class="card-header">
                     <i data-lucide="database" style="color: var(--primary);"></i>
-                    <h2>Input Metrics</h2>
+                    <h2>Data Input</h2>
                 </div>
                 <div class="form-body" style="padding: 0;">
                     <table class="data-table">
                         <thead>
                             <tr>
                                 <th>Parameter</th>
-                                <th style="text-align: right;">Value</th>
+                                <th style="text-align: right;">Nilai</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -63,7 +63,7 @@
             <div class="card">
                 <div class="card-header">
                     <i data-lucide="bar-chart-3" style="color: var(--primary);"></i>
-                    <h2>Confidence Score</h2>
+                    <h2>Probabilitas Prediksi</h2>
                 </div>
                 <div class="form-body">
                     <div class="prob-list">
@@ -85,10 +85,10 @@
 
         <div class="btn-group-center">
             <a href="/test" class="btn-secondary">
-                <i data-lucide="rotate-ccw"></i> New Analysis
+                <i data-lucide="rotate-ccw"></i> Ulangi Test
             </a>
             <a href="/" class="btn-primary" style="margin-left: 1rem;">
-                <i data-lucide="home"></i> Back to Home
+                <i data-lucide="home"></i> Kembali ke Beranda
             </a>
         </div>
     </main>
