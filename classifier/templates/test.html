@@ -1,180 +1,192 @@
+{% load static %}
 <!DOCTYPE html>
 <html lang="id">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Test Klasifikasi Naive Bayes</title>
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="static/css/hasil.css">
-    <link rel="stylesheet" href="static/css/test.css">
+    <title>Health Analysis - ObesityPredict AI</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <link rel="stylesheet" href="{% static 'css/modern.css' %}">
 </head>
 <body>
-    <!-- Navigation Bar -->
     <nav class="navbar">
         <div class="navbar-container">
-            <div class="navbar-brand">
-                <i class="fas fa-brain"></i> Naive Bayes Classifier
-            </div>
+            <a href="/" class="navbar-brand">
+                <i data-lucide="activity"></i> ObesityPredict AI
+            </a>
             <ul class="navbar-menu">
-                <li><a href="/" class="nav-link">Beranda</a></li>
-                <li><a href="/test" class="nav-link active">Test Klasifikasi</a></li>
-                <li><a href="/hasil" class="nav-link">Hasil</a></li>
+                <li><a href="/" class="nav-link">Home</a></li>
+                <li><a href="/test" class="nav-link active">Analyze</a></li>
+                <li><a href="#" class="nav-link">About</a></li>
             </ul>
         </div>
     </nav>
 
-    <div class="container-main">
-        <!-- Top Bar -->
-        <div class="top-bar">
-            <h1><i class="fas fa-flask"></i> Test Klasifikasi</h1>
-            <p>Masukkan Data untuk Prediksi Tingkat Obesitas</p>
+    <main class="container-main">
+        <div class="page-header">
+            <h1>Health Assessment</h1>
+            <p>Please fill out the form below for a comprehensive health analysis.</p>
         </div>
 
-        <!-- Form Card -->
-        <div class="card card-custom">
-            <div class="card-header card-header-custom">
-                <h5 style="margin: 0;"><i class="fas fa-edit"></i> Data Input Klasifikasi</h5>
+        <div class="card">
+            <div class="card-header">
+                <i data-lucide="clipboard-list" style="color: var(--primary);"></i>
+                <h2>Analysis Parameters</h2>
             </div>
-            <form method="POST" class="form-container" action="/hasil">
+            <form method="POST" action="/hasil">
                 {% csrf_token %}
+                <div class="form-body">
+                    <div class="form-grid">
+                        <div class="section-title">Personal Metrics</div>
+                        
+                        <div class="form-group">
+                            <label for="gender">Gender</label>
+                            <select name="gender" id="gender" required>
+                                <option value="">Select Gender</option>
+                                <option value="Male">Male</option>
+                                <option value="Female">Female</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="age">Age (Years)</label>
+                            <input type="number" name="age" id="age" placeholder="e.g. 25" step="0.1" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="height">Height (Meters)</label>
+                            <input type="number" name="height" id="height" placeholder="e.g. 1.75" step="0.01" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="weight">Weight (Kilograms)</label>
+                            <input type="number" name="weight" id="weight" placeholder="e.g. 70" step="0.1" required>
+                        </div>
 
-                <!-- Row 1: Gender, Age, Height -->
-                <div class="form-row">
-                    <div class="form-group">
-                        <label for="gender">Gender <span class="required">*</span></label>
-                        <select name="gender" id="gender" required>
-                            <option value="">-- Pilih Gender --</option>
-                            <option value="Male">Male</option>
-                            <option value="Female">Female</option>
-                        </select>
-                    </div>
-                    <div class="form-group">
-                        <label for="age">Age (tahun) <span class="required">*</span></label>
-                        <input type="number" name="age" id="age" placeholder="20" step="0.1" required>
-                    </div>
-                    <div class="form-group">
-                        <label for="height">Height (m) <span class="required">*</span></label>
-                        <input type="number" name="height" id="height" placeholder="1.76" step="0.01" required>
+                        <div class="section-title">History & Genetics</div>
+                        
+                        <div class="form-group">
+                            <label for="family_history_with_overweight">Family History of Overweight?</label>
+                            <select name="family_history_with_overweight" id="family_history_with_overweight" required>
+                                <option value="">Select Option</option>
+                                <option value="yes">Yes</option>
+                                <option value="no">No</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="favc">Frequently eat high caloric food?</label>
+                            <select name="favc" id="favc" required>
+                                <option value="">Select Option</option>
+                                <option value="yes">Yes</option>
+                                <option value="no">No</option>
+                            </select>
+                        </div>
+
+                        <div class="section-title">Eating Habits</div>
+                        
+                        <div class="form-group">
+                            <label for="fcvc">Vegetable consumption frequency</label>
+                            <input type="number" name="fcvc" id="fcvc" placeholder="1-3" step="0.1" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="ncp">Number of main meals</label>
+                            <input type="number" name="ncp" id="ncp" placeholder="1-4" step="0.1" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="caec">Food consumption between meals</label>
+                            <select name="caec" id="caec" required>
+                                <option value="">Select frequency</option>
+                                <option value="Always">Always</option>
+                                <option value="Frequently">Frequently</option>
+                                <option value="Sometimes">Sometimes</option>
+                                <option value="no">Never</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="ch2o">Daily water consumption (Liters)</label>
+                            <input type="number" name="ch2o" id="ch2o" placeholder="1-3" step="0.1" required>
+                        </div>
+
+                        <div class="section-title">Lifestyle & Activity</div>
+                        
+                        <div class="form-group">
+                            <label for="smoke">Do you smoke?</label>
+                            <select name="smoke" id="smoke" required>
+                                <option value="no">No</option>
+                                <option value="yes">Yes</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="scc">Calorie intake monitoring?</label>
+                            <select name="scc" id="scc" required>
+                                <option value="no">No</option>
+                                <option value="yes">Yes</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="faf">Physical activity frequency</label>
+                            <input type="number" name="faf" id="faf" placeholder="0-3" step="0.1" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="tue">Time using technology devices</label>
+                            <input type="number" name="tue" id="tue" placeholder="0-2" step="0.1" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="calc">Alcohol consumption</label>
+                            <select name="calc" id="calc" required>
+                                <option value="no">Never</option>
+                                <option value="Sometimes">Sometimes</option>
+                                <option value="Frequently">Frequently</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="mtrans">Primary mode of transport</label>
+                            <select name="mtrans" id="mtrans" required>
+                                <option value="">Select Mode</option>
+                                <option value="Public_Transportation">Public Transport</option>
+                                <option value="Automobile">Automobile</option>
+                                <option value="Bike">Bike</option>
+                                <option value="Motorbike">Motorbike</option>
+                                <option value="Walking">Walking</option>
+                            </select>
+                        </div>
                     </div>
                 </div>
-
-                <!-- Row 2: Weight, Family History, FAVC -->
-                <div class="form-row">
-                    <div class="form-group">
-                        <label for="weight">Weight (kg) <span class="required">*</span></label>
-                        <input type="number" name="weight" id="weight" placeholder="53.7" step="0.1" required>
-                    </div>
-                    <div class="form-group">
-                        <label for="family_history_with_overweight">Family History with Overweight <span class="required">*</span></label>
-                        <select name="family_history_with_overweight" id="family_history_with_overweight" required>
-                            <option value="">-- Pilih --</option>
-                            <option value="yes">Yes</option>
-                            <option value="no">No</option>
-                        </select>
-                    </div>
-                    <div class="form-group">
-                        <label for="favc">Frequently Eat High Caloric Food (FAVC) <span class="required">*</span></label>
-                        <select name="favc" id="favc" required>
-                            <option value="">-- Pilih --</option>
-                            <option value="yes">Yes</option>
-                            <option value="no">No</option>
-                        </select>
-                    </div>
-                </div>
-
-                <!-- Row 3: FCVC, NCP, CAEC -->
-                <div class="form-row">
-                    <div class="form-group">
-                        <label for="fcvc">Frequency of Consumption of Vegetables (FCVC) <span class="required">*</span></label>
-                        <input type="number" name="fcvc" id="fcvc" placeholder="2" step="0.1" required>
-                    </div>
-                    <div class="form-group">
-                        <label for="ncp">Number of Main Meals (NCP) <span class="required">*</span></label>
-                        <input type="number" name="ncp" id="ncp" placeholder="3.9" step="0.1" required>
-                    </div>
-                    <div class="form-group">
-                        <label for="caec">Consumption of Food Between Meals (CAEC) <span class="required">*</span></label>
-                        <select name="caec" id="caec" required>
-                            <option value="">-- Pilih --</option>
-                            <option value="Always">Always</option>
-                            <option value="Frequently">Frequently</option>
-                            <option value="Sometimes">Sometimes</option>
-                            <option value="no">No</option>
-                        </select>
-                    </div>
-                </div>
-
-                <!-- Row 4: Smoke, CH2O, SCC -->
-                <div class="form-row">
-                    <div class="form-group">
-                        <label for="smoke">Smoke <span class="required">*</span></label>
-                        <select name="smoke" id="smoke" required>
-                            <option value="">-- Pilih --</option>
-                            <option value="yes">Yes</option>
-                            <option value="no">No</option>
-                        </select>
-                    </div>
-                    <div class="form-group">
-                        <label for="ch2o">Daily Water Consumption (CH2O) <span class="required">*</span></label>
-                        <input type="number" name="ch2o" id="ch2o" placeholder="1.86" step="0.1" required>
-                    </div>
-                    <div class="form-group">
-                        <label for="scc">Calorie Intake Monitoring (SCC) <span class="required">*</span></label>
-                        <select name="scc" id="scc" required>
-                            <option value="">-- Pilih --</option>
-                            <option value="yes">Yes</option>
-                            <option value="no">No</option>
-                        </select>
-                    </div>
-                </div>
-
-                <!-- Row 5: FAF, TUE, CALC -->
-                <div class="form-row">
-                    <div class="form-group">
-                        <label for="faf">Physical Activity Frequency (FAF) <span class="required">*</span></label>
-                        <input type="number" name="faf" id="faf" placeholder="2.87" step="0.1" required>
-                    </div>
-                    <div class="form-group">
-                        <label for="tue">Time Using Technology (TUE) <span class="required">*</span></label>
-                        <input type="number" name="tue" id="tue" placeholder="2" step="0.1" required>
-                    </div>
-                    <div class="form-group">
-                        <label for="calc">Consumption of Alcohol (CALC) <span class="required">*</span></label>
-                        <select name="calc" id="calc" required>
-                            <option value="">-- Pilih --</option>
-                            <option value="Frequently">Frequently</option>
-                            <option value="Sometimes">Sometimes</option>
-                            <option value="no">No</option>
-                        </select>
-                    </div>
-                </div>
-
-                <!-- Row 6: MTRANS -->
-                <div class="form-row">
-                    <div class="form-group full-width">
-                        <label for="mtrans">Mode of Transportation (MTRANS) <span class="required">*</span></label>
-                        <select name="mtrans" id="mtrans" required>
-                            <option value="">-- Pilih Mode Transportasi --</option>
-                            <option value="Public_Transportation">Public Transportation</option>
-                            <option value="Automobile">Automobile</option>
-                            <option value="Bike">Bike</option>
-                            <option value="Motorbike">Motorbike</option>
-                            <option value="Walking">Walking</option>
-                        </select>
-                    </div>
-                </div>
-
-                <!-- Submit Button -->
-                <div class="form-actions">
-                    <button type="submit" class="btn btn-submit">
-                        <i class="fas fa-check-circle"></i> Prediksi Klasifikasi
+                <div class="form-footer">
+                    <button type="reset" class="btn-secondary">Reset Form</button>
+                    <button type="submit" class="btn-primary" id="submitBtn">
+                        <i data-lucide="search"></i> Run Analysis
                     </button>
-                    <a href="/" class="btn btn-reset">
-                        <i class="fas fa-redo"></i> Reset
-                    </a>
                 </div>
             </form>
         </div>
-    </div>
+    </main>
+
+    <footer>
+        <p>&copy; 2026 ObesityPredict AI - Naive Bayes Classifier Project.</p>
+    </footer>
+
+    <script>
+        lucide.createIcons();
+        
+        // Add loading state to button
+        document.querySelector('form').addEventListener('submit', function(e) {
+            const btn = document.getElementById('submitBtn');
+            btn.innerHTML = '<i data-lucide="loader-2" class="animate-spin"></i> Analyzing...';
+            btn.style.opacity = '0.7';
+            btn.style.pointerEvents = 'none';
+            lucide.createIcons();
+        });
+    </script>
+    
+    <style>
+        .animate-spin {
+            animation: spin 1s linear infinite;
+        }
+        @keyframes spin {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+    </style>
 </body>
 </html>
