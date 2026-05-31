@@ -1,5 +1,7 @@
 # Obesity Prediction - Naive Bayes
 
+>Online view : [mungkinkamuobes.vercel.app](https://mungkinkamuobes.vercel.app)
+
 Aplikasi web berbasis **Django** untuk memprediksi tingkat obesitas seseorang menggunakan algoritma **Naive Bayes**. Pengguna dapat memasukkan data kesehatan dan mendapatkan hasil prediksi secara langsung.
 
 ---
