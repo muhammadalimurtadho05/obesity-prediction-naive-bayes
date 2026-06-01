@@ -1,6 +1,4 @@
 import pandas as pd
-import numpy as np
-from sklearn.model_selection import train_test_split
 from sklearn.naive_bayes import GaussianNB
 from sklearn.preprocessing import LabelEncoder
 from sklearn.metrics import (
@@ -13,7 +11,7 @@ warnings.filterwarnings("ignore")
 
 class bayes_model:
     def __init__(self):
-        FILE_PATH = 'classifier/dataset/obesitas.xlsx'
+        FILE_PATH = 'classifier/dataset/dtts.xlsx'
         self.df = pd.read_excel(FILE_PATH)
         
     def labelEncoding(self):
@@ -65,12 +63,6 @@ class bayes_model:
         prediksi_label = le_target.inverse_transform([prediksi_kode])[0]
         probabilitas   = model.predict_proba(sample_df)[0]
 
-        # print("\nData Input:")
-        # for k, v in sample_raw.items():
-        #     print(f"  {k:<35}: {v}")
-
-        # print(f"\nHasil Prediksi  : {prediksi_label}")
-        # print("\nProbabilitas per kelas:")
         proba = {}
         for kelas, prob in zip(le_target.classes_, probabilitas):
             proba[kelas] = prob 
