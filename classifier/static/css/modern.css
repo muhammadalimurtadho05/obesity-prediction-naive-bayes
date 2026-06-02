@@ -266,6 +266,11 @@ main {
     padding: 2rem;
 }
 
+.table-responsive {
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+}
+
 .form-grid {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
@@ -474,13 +479,59 @@ main {
     }
 }
 
+@media (max-width: 768px) {
+    .form-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .container-main {
+        margin-top: 5rem;
+    }
+
+    .result-main {
+        font-size: 2.25rem;
+    }
+}
+
 @media (max-width: 640px) {
     .cta-group {
         flex-direction: column;
     }
     
-    .navbar-menu {
-        display: none; /* Hide menu on mobile for simplicity, or add a hamburger */
+    .hero h1 {
+        font-size: 2rem;
+    }
+
+    .navbar-container {
+        padding: 0 1rem;
+    }
+
+    .navbar-brand {
+        font-size: 1.1rem;
+    }
+
+    .nav-link {
+        padding: 0.5rem 0.75rem;
+        font-size: 0.8rem;
+    }
+
+    .btn-group-center {
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    .btn-group-center a {
+        margin-left: 0 !important;
+        justify-content: center;
+    }
+
+    .form-footer {
+        flex-direction: column-reverse;
+    }
+
+    .form-footer button {
+        width: 100%;
+        justify-content: center;
     }
 }
 
